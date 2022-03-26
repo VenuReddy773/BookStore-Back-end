@@ -74,6 +74,7 @@ namespace Bookstore.Controllers
                 throw e;
             }
         }
+        [Authorize]
         [AllowAnonymous]
         [HttpPut]
         public ActionResult ResetPassword(string Password)

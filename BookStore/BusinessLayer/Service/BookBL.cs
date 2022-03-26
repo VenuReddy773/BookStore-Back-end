@@ -25,5 +25,52 @@ namespace BusinessLayer.Service
                 throw e;
             }
         }
+
+        public void deleteBook(BookTable bookTable)
+        {
+            try
+            {
+                this.bookRL.deleteBook(bookTable);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public List<BookTable> getAllBooks()
+        {
+            try
+            {
+                return this.bookRL.getAllBooks();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public BookTable getBookById(int? id)
+        {
+            try
+            {
+                return this.bookRL.getBookById(id);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        public void updateBook(BookTable bookTable)
+        {
+            try
+            {
+                this.bookRL.updateBook(bookTable);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

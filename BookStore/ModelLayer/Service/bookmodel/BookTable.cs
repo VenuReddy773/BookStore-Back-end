@@ -12,7 +12,7 @@ namespace ModelLayer.Service.bookmodel
         public string Description { get; set; }
         public int Price { get; set; }
         public int DiscountedPrice { get; set; }
-        public float Rating { get; set; }
+        public double Rating { get; set; }
         public string BookImage { get; set; }
         public int Quantity { get; set; }
         public int ReviewCount { get; set; }
