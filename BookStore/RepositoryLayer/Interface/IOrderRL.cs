@@ -1,10 +1,13 @@
-﻿using System;
+﻿using ModelLayer.Service.OrderModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace RepositoryLayer.Interface
 {
-    internal interface IOrderRL
+    public interface IOrderRL
     {
+        string AddOrder(OrderModel order);
+        List<GetOrderModel> RetrieveOrderDetails(int userId);
     }
 }

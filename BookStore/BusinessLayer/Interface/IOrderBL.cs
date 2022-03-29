@@ -1,10 +1,13 @@
-﻿using System;
+﻿using ModelLayer.Service.OrderModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BusinessLayer.Interface
 {
-    internal interface IOrderBL
+    public interface IOrderBL
     {
+        string AddOrder(OrderModel order);
+        List<GetOrderModel> RetrieveOrderDetails(int userId);
     }
 }
