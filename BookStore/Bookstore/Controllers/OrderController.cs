@@ -55,5 +55,25 @@ namespace Bookstore.Controllers
                 return this.NotFound(new  { Status = false, Message = ex.Message });
             }
         }
+        [HttpDelete]
+        public ActionResult DeleteOrder(int OrderId)
+        {
+            try
+            {
+                var result = this.orderBL.DeleteOrder(OrderId);
+                if (result == true)
+                {
+                    return this.Ok(new { success = true, message = "Order deleted Succesfully" });
+                }
+                else
+                {
+                    return this.BadRequest(new { success = false, message = "Order not deleted" });
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

@@ -26,6 +26,18 @@ namespace BusinessLayer.Service
             }
         }
 
+        public bool DeleteOrder(int OrderId)
+        {
+            try
+            {
+                return this.orderRL.DeleteOrder(OrderId);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public List<GetOrderModel> RetrieveOrderDetails(int userId)
         {
             try

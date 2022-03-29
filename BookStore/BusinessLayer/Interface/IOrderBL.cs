@@ -9,5 +9,6 @@ namespace BusinessLayer.Interface
     {
         string AddOrder(OrderModel order);
         List<GetOrderModel> RetrieveOrderDetails(int userId);
+        bool DeleteOrder(int OrderId);
     }
 }

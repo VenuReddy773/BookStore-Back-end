@@ -63,3 +63,38 @@ BEGIN
 		inner join Orders
 		on Orders.Book_id=BookTable.Book_id where Orders.user_id=@user_id
 END
+
+
+alter procedure DeleteOrder
+(
+	@OrderId int
+)
+as
+Declare @books int,@Book_id int
+begin try
+	if(Exists(select * from Orders where OrderId=@OrderId))
+	Begin
+		Begin try
+			Begin transaction
+				select @books=BookQuantity,@Book_id=Book_id from Orders where  OrderId = @OrderId
+				Update BookTable set Quantity=Quantity+@books where Book_id=@Book_id			
+				Delete from Orders where OrderId = @OrderId
+			commit Transaction
+		End try
+		Begin catch
+			Rollback transaction
+		End catch
+		end
+		Else
+		begin
+			Select 1
+		end
+end try
+begin catch
+select
+    ERROR_NUMBER() as ErrorNumber,
+    ERROR_STATE() as ErrorState,
+    ERROR_PROCEDURE() as ErrorProcedure,
+    ERROR_LINE() as ErrorLine,
+    ERROR_MESSAGE() as ErrorMessage;
+End catch

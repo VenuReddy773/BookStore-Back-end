@@ -52,6 +52,33 @@ namespace RepositoryLayer.Services
             }
         }
 
+        public bool DeleteOrder(int OrderId)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(this.Configuration.GetConnectionString("BookStore")))
+                {
+                    SqlCommand cmd = new SqlCommand("DeleteOrder", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@OrderId", OrderId);
+                    con.Open();
+                    int result = cmd.ExecuteNonQuery();
+                    if (result != 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public List<GetOrderModel> RetrieveOrderDetails(int userId)
         {
             try
