@@ -67,6 +67,8 @@ namespace Bookstore
             services.AddTransient<IAddressRL, AddressRL>();
             services.AddTransient<IOrderBL, OrderBL>();
             services.AddTransient<IOrderRL, OrderRL>();
+            services.AddTransient<IFeedbackBL, FeedbackBL>();
+            services.AddTransient<IFeedbackRL, FeedbackRL>();
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
