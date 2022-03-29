@@ -9,7 +9,6 @@ using System.Linq;
 
 namespace Bookstore.Controllers
 {
-    [Authorize]
     [Route("[controller]/[action]")]
     [ApiController]
     public class BookController : ControllerBase
