@@ -16,7 +16,7 @@ select * from Orders
 
 
 
-create procedure AddingOrders
+alter procedure AddingOrders
 	@user_id int,
 	@AddressId int,
 	@Book_id INT ,
@@ -33,7 +33,7 @@ BEGIN
 			Begin transaction			
 				INSERT INTO Orders(user_id,AddressId,Book_id,TotalPrice,BookQuantity,OrderDate)
 				VALUES ( @user_id,@AddressId,@Book_id,@BookQuantity*@Total,@BookQuantity,GETDATE())
-				Update BookTable set Quantity=Quantity-@BookQuantity
+				Update BookTable set Quantity=Quantity-@BookQuantity where Book_id=@Book_id
 				Delete from CartTable where Book_id = @Book_id and user_id = @user_id
 			commit Transaction
 		End try
